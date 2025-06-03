@@ -1,0 +1,214 @@
+{% extends "layout.html" %} {% block content%}
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- Sidebar brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url_for('home')}}">
+    <div class="sidebar-brand-icon">
+      <img src="static/images/QardioSis_logo.png" width="95%">
+    </div>
+  </a>
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+  <!-- Nav item dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('home') }}">
+      <i class="fa-solid fa-gauge-high"></i>
+      <span>Dashboard</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('upload') }}">
+      <i class="fa-solid fa-cloud-arrow-up"></i>
+      <span>Upload Files</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('history') }}">
+      <i class="fa-solid fa-clipboard-list"></i>
+      <span>Patient History</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('setting') }}">
+      <i class="fa-solid fa-gear"></i>
+      <span>Settings</span>
+    </a>
+  </li>
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+  <div>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('logout') }}">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </li>
+  </div>
+</ul>
+<!-- Content wrapper -->
+<div id="content-wrapper" class="d-flex flex-column" action="{{ url_for('home') }}" method="GET">
+  <!-- Main content -->
+  <div id="content">
+    <!-- Topbar -->
+    <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color:rgba(245, 244, 239, 1);">
+      <span class="navbar navbar-brand mb-0">Dashboard</span>
+      <ul class="navbar-nav ml-auto">
+        <div class="topbar-divider d-none d-sm-block"></div>
+        <li class="nav-item no-arrow user">
+          <a class="nav-link" role="button" href="">
+            <span class="mr-2 d-none d-lg-inline text-black-600 small">{{ name }}</span>
+            <img class="img-profile rounded-circle" src="{{ link }}">
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+    <!-- Page Heading -->
+    {% if name %}
+    <div class="card rounded">
+      <div class="row">
+        <div class="col-sm-3 text-start">
+          <img class="baymax mb-0" src="static/images/gif6.gif" width="100%" height="100%">
+        </div>
+        <div class="col-sm-6" action="{{ url_for('home') }}" method="GET">
+          <h3 class="h3 text-gray-800 welcome mt-lg-4 d-flex">Welcome, Dr.{{ name }}</h3>
+          <h5 class="mb-0 text-gray-800 align-items-end nice-day">Have a nice day at work!</h5>
+        </div>
+        <div class="col-sm-3 d-flex align-items-end mb-4 mr-0 mb-0 text-gray-800 date">
+          {{ datetime }}
+        </div>
+      </div>
+    </div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h5 class="h5 mt-5 text-gray-800 summary">Summary Report</h5>
+    </div>
+    <!-- Content Row -->
+    <!-- Hipertrofi kardiomiopati -->
+    
+    <div class="row">
+      <div class="col-xl-4 col-md-12 mb-4">
+        <div class="card border-left-primary shadow h-100 py-6 card-summary">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col mr-2">
+                <div class="text-xl font-weight-bold text-uppercase mb-2 text-summary">Hypertrophic Cardiomyopathy</div>
+                <div class="h4 mb-0 font-weight-bold text-gray-800 number-summary">{{ hc }}</div>
+              </div>
+              <div class="col-auto icon-card">
+                <i class="fa-solid fa-file-medical fa-3x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Dilated Cardiomyopathy-->
+      <div class="col-xl-4 col-md-12 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2 card-summary">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col mr-2">
+                <div class="text-xl font-weight-bold text-uppercase mb-2 text-summary"> Dilated Cardiomyopathy </div>
+                <div class="h4 mb-0 font-weight-bold text-gray-800 number-summary">{{ dc }}</div>
+              </div>
+              <div class="col-auto">
+                <i class="fa-solid fa-file-medical fa-3x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Myocardial Infarction -->
+      <div class="col-xl-4 col-md-12 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2 card-summary">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col mr-2">
+                <div class="text-xl font-weight-bold text-uppercase mb-2 text-summary"> Myocardial Infarction </div>
+                <div class="h4 mb-0 font-weight-bold text-gray-800 number-summary">{{ mi }}</div>
+              </div>
+              <div class="col-auto">
+                <i class="fa-solid fa-file-medical fa-3x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="'container-fluid'">
+      <div class="row">
+        <div class="col-xl-4 col-md-12 mb-4">
+          <div class="card border-left-primary shadow h-100 py-6 card-summary">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xl font-weight-bold text-uppercase mb-2 text-summary"> Abnormal Right Ventricle </div>
+                  <div class="h4 mb-0 font-weight-bold text-gray-800 number-summary">{{ arv }}</div>
+                </div>
+                <div class="col-auto icon-card">
+                  <i class="fa-solid fa-file-medical fa-3x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Dilated Cardiomyopathy-->
+        <div class="col-xl-4 col-md-12 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2 card-summary">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xl font-weight-bold text-uppercase mb-2 text-summary"> Normal </div>
+                  <div class="h4 mb-0 font-weight-bold text-gray-800 number-summary">{{ nc }}</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fa-solid fa-file-medical fa-3x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Myocardial Infarction -->
+        <div class="col-xl-4 col-md-12 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2 card-summary">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xl font-weight-bold text-uppercase mb-2 text-summary"> Total Patient </div>
+                  <div class="h4 mb-0 font-weight-bold text-gray-800 number-summary">{{ total }}</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fa-solid fa-file-medical fa-3x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          {% for category, message in messages %}
+              <div class="alert alert-danger alert-{{ category }} alert-dismissible fade show" role="alert">
+                  <span>{{ message }}</span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      {% endif %}
+  </div>
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>Copyright © QardioSis 2022</span>
+      </div>
+    </div>
+  </footer>
+</div> {% endblock %}

@@ -1,0 +1,175 @@
+{% extends "layout.html" %} {% block content %}
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- Sidebar brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url_for('home')}}">
+    <div class="sidebar-brand-icon">
+      <img src="static/images/QardioSis_logo.png" width="95%">
+    </div>
+  </a>
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+  <!-- Nav item dashboard -->
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('home') }}">
+      <i class="fa-solid fa-gauge-high"></i>
+      <span>Dashboard</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('upload') }}">
+      <i class="fa-solid fa-cloud-arrow-up"></i>
+      <span>Upload Files</span>
+    </a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('history') }}">
+      <i class="fa-solid fa-clipboard-list"></i>
+      <span>Patient History</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('setting') }}">
+      <i class="fa-solid fa-gear"></i>
+      <span>Settings</span>
+    </a>
+  </li>
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+  <div>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('logout') }}">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </li>
+  </div>
+</ul>
+<!-- Content wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+  <!-- Main content -->
+  <div id="content">
+    <!-- Topbar -->
+    <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color:rgba(245, 244, 239, 1);">
+      <span class="navbar navbar-brand mb-0 h1">Patient History</span>
+      <ul class="navbar-nav ml-auto">
+        <div class="topbar-divider d-none d-sm-block"></div>
+        <li class="nav-item no-arrow user">
+          <a class="nav-link" role="button" href="">
+            <span class="mr-2 d-none d-lg-inline text-black-600 small">{{ name }}</span>
+            <img class="img-profile rounded-circle" src="{{ link }}">
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Begin Page Content -->
+  
+  <div class="container histori-container">
+    <!--Search bar-->
+    {% if data %}
+    <!--Filter Parameter-->
+    <div class="input-field-calendar row">
+      <div class="col form-inline">
+        <label class="mr-2">From: </label>
+        <input class="border border-dark input-calendar-field form-control search-field text-select" placeholder="yyyy/mm/dd" type="text" id="min" name="min">
+        <i class="icon-calendar fa-solid fa-calendar-days rounded" id="min"></i>
+      </div>
+      <div class="col form-inline">
+        <label class="mr-4">To: </label>
+        <input class="border border-dark input-calendar-field form-control search-field text-select" placeholder="yyyy/mm/dd" type="text" id="max" name="max">
+        <i class="icon-calendar fa-solid fa-calendar-days rounded" id="max"></i>
+      </div>
+    </div>
+    <hr class="divider" size="5px">
+    <!--Tabel Histori-->
+    <div class="container hidden-scrollbar table-container" action="">
+      <div class="inner">
+        <table id="myTable" class="table table-bordered  table-active table-hover display nowrap" action="{{url_for('history')}}" method="GET">
+          <thead class="thead-table">
+            <tr>
+              <th scope="col" data-column="name" data-order="desc">Name</th>
+              <th scope="col" data-column="id" data-order="desc">ID</th>
+              <th scope="col" data-column="date_upload" data-order="desc">DATE UPLOAD</th>
+              <th scope="col" data-column="date_check" data-order="desc">DATE CHECK</th>
+              <th scope="col" data-column="gender" data-order="desc">GENDER</th>
+              <th scope="col" data-column="age" data-order="desc">AGE</th>
+              <th scope="col" data-column="bsa" data-order="desc">BSA</th>
+              <th scope="col" data-column="hospital" data-order="desc">HOSPITAL</th>
+              <th scope="col" data-column="classification" data-order="desc">ANOMALY CLASSIFICATION</th>
+              <th scope="col" data-column="" data-order="desc">ED[vol(LV)]</th>
+              <th scope="col" data-column="" data-order="desc">ES[vol(LV)]</th>
+              <th scope="col" data-column="" data-order="desc">ED[vol(RV)]</th>
+              <th scope="col" data-column="" data-order="desc">ES[vol(RV)]</th>
+              <th scope="col" data-column="" data-order="desc">ED[vol(LV)/vol(RV)]</th>
+              <th scope="col" data-column="" data-order="desc">ES[vol(LV)/vol(RV)]</th>
+              <th scope="col">ACTION</th>
+            </tr>
+          </thead>
+          <tbody> {% for row in data %} <tr>
+              <td> {{row[2]}}</td>
+              <td> {{row[3]}}</td>
+              <td>{{ row[4] }}</td>
+              <td>{{ row[5] }}</td>
+              <td>{{ row[6] }}</td>
+              <td>{{ row[7] }}</td>
+              <td>{{ row[8] }}</td>
+              <td>{{ row[10] }}</td>
+              <td>{{ row[9] }}</td>
+              <td>{{ row[13]}}</td>
+              <td>{{ row[14]}}</td>
+              <td>{{ row[15]}}</td>
+              <td>{{ row[16]}}</td>
+              <td>{{ row[17]}}</td>
+              <td>{{ row[18]}}</td>
+              
+              <td>
+                <a>
+                  <a id="myModal" style="color:black" href="/history/view/{{ row[0] }}">
+                    <i type="button" class="fa-solid fa-eye ml-3"></i>
+                  </a>
+                  <a id="myModal" style="color:black" href="/history/delete/{{ row[0] }}">
+                    <i type="button" class="fa-solid fa-trash-can ml-3"></i>
+                  </a>
+                  <!-- <i type="button" class="fa-solid fa-trash-can ml-3" href="/history/delete/{{ row['id'] }}"></i> -->
+                </a>
+                </i>
+              </td>
+            </tr> {% endfor %} </tbody>
+        </table>
+      </div>
+    </div>
+    {% else %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-danger alert-{{ category }} alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% endif %}
+    <!-- Modal Download-->
+    <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Success !</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body"> Your data has been downloaded ! </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End tabel-->
+  </div>
+</div> {% endblock %}

@@ -1,0 +1,272 @@
+{% extends "layout.html" %} {% block content%}
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- Sidebar brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url_for('home')}}">
+    <div class="sidebar-brand-icon">
+      <img src="/static/images/QardioSis_logo.png" width="95%">
+    </div>
+  </a>
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+  <!-- Nav item dashboard -->
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('home') }}">
+      <i class="fa-solid fa-gauge-high"></i>
+      <span>Dashboard</span>
+    </a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('upload') }}">
+      <i class="fa-solid fa-cloud-arrow-up"></i>
+      <span>Upload Files</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('history') }}">
+      <i class="fa-solid fa-clipboard-list"></i>
+      <span>Patient History</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href=" {{ url_for('setting') }}">
+      <i class="fa-solid fa-gear"></i>
+      <span>Settings</span>
+    </a>
+  </li>
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+  <div>
+    <li class="nav-item">
+      <a class="nav-link" href=" {{ url_for('logout') }}">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </li>
+  </div>
+</ul>
+<!-- Content wrapper -->
+<div id="content-wrapper" class="">
+  <!-- Main content -->
+  <div id="content">
+    <!-- Topbar -->
+    <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color:rgba(245, 244, 239, 1);">
+      <span class="navbar navbar-brand mb-0 h1">Upload File</span>
+      <ul class="navbar-nav ml-auto">
+        
+        <div class="topbar-divider d-none d-sm-block"></div>
+        <li class="nav-item no-arrow user">
+          <a class="nav-link" role="button" href=" {{ url_for('setting') }}">
+            <span class="mr-2 d-none d-lg-inline text-black-600 small">{{name}}</span>
+            <img class="img-profile rounded-circle" src="{{ link }}">
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container-fluid" id="grad1">
+    {% if name %}
+    <!-- Ini yang ditambha loader-->
+    <div class="page-loader">
+      <div id="preloader">
+          <div id="loader"></div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-0">
+      <div class="col-11 col-sm-11 text-center p-0 mt-0 mb-0">
+        <div class="card px-0 pt-4 pb-0 mt-0 mb-0" id="card-upload">
+          <div class="row">
+            <div class="col-md-12 mx-0">
+              <div id="msform">
+                <!-- fieldsets -->
+                <strong>
+                  <h1>Result</h1>
+                </strong>
+                <form action="{{ url_for('result') }}" method="POST">
+                  {% for x in data %}
+                  <div class="form-card justify-content-center">
+                    <input type="hidden" id="hidden" name="hidden" value="True">
+                    <div class="d-flex justify-content-center mt-5">
+                      <div class="spinner">
+                        <div class="loading">
+                          <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <form class="">
+                          <table class="table table-bordered table-sm ml-2">
+                              <thead class="thead-dark">
+                                  <tr>
+                                      <th>ED[vol(LV)]</th>
+                                      <th>ES[vol(LV)]	</th>                            
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>{{ x[13]}}</td>
+                                      <td>{{ x[14]}}</td>                           
+                                  </tr>
+                              </tbody>
+                          </table>
+                          <table class="table table-bordered table-sm ml-2">
+                              <thead class="thead-dark">
+                                  <tr>
+                                      <th>ED[vol(RV)]</th>
+                                      <th>ES[vol(RV)]</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>{{ x[15]}}</td>
+                                      <td>{{ x[16]}}</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                          <table class="table table-bordered table-sm ml-2">
+                              <thead class="thead-dark">
+                                  <tr>
+                                      <th>ED[vol(LV)/vol(RV)]</th>
+                                      <th>ES[vol(LV)/vol(RV)]</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>{{ x[17]}}</td>
+                                      <td>{{ x[18]}}</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                          
+                      </div>
+          
+                      <div class="col">
+                        <div>
+                          <div class="mr-3">
+
+                          <div class="result float-left">
+                            <div class="mt-4 mr-2">
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label>Patient Name:</label>
+                                </div>
+                                <div class="col">
+                                  <input name="" type="text" class="bg-light form-control result-field" value="{{x[2]}}">
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label>Gender:</label>
+                                </div>
+                                <div class="col">
+                                  <input name="" type="text" class="bg-light form-control result-field" value="{{x[6]}}">
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label>Patient Age:</label>
+                                </div>
+                                <div class="col">
+                                  <input name="" type="number" class="bg-light form-control result-field" value="{{x[7]}}">
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label>BSA:</label>
+                                </div>
+                                <div class="col">
+                                  <input name="" type="number" class="bg-light form-control result-field" value="{{x[8]}}">
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label>CLASSIFICATION</label>
+                                </div>
+                                <div class="col">
+                                  <input name="" type="text" class="bg-light form-control result-field" value="{{x[9]}}">
+                                </div>
+                              </div>                            
+                            </div>
+                            
+                          </div>
+                          
+                        </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100"  src="{{link_src}}" style="width: 100%; height: 2%; background-color: black;" >
+                        <div class="carousel-caption d-none d-md-block" style="color:black;">
+                          <h5>{{anomaly}}</h5>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{{src2}}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block" style="color:black;">
+                          <h5>Ground Truth of {{anomaly}}</h5>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="color:black;">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="color:black;">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                  {% endfor %}
+                  <a type="button" name="previous" class="action-button-previous" value="Cancel" href="{{ url_for('upload') }}">Cancel</a>
+                  <!-- <button type="button" class="action-button" data-toggle="modal" data-target="#exampleModal" >Submit
+                          <input type="submit" class="btn action-button" aria-hidden="true"></button> -->
+                  <button type="Submit" class="btn action-button" value="Submit" id="clickBtn" data-toggle="modal" data-target="#exampleModal">Submit</button>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          {% for category, message in messages %}
+              <div class="alert alert-danger alert-{{ category }} alert-dismissible fade show" role="alert">
+                  <span>{{ message }}</span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      {% endif %}
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Finished !</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span>Your data has been added to database</span>
+        </div>
+        <div class="modal-footer">
+          <form method="post" action="{{ url_for('finish')}}">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button name="OK" type="submit" value="done" class="btn btn-primary">OK</button>
+          </form>
+        </div> {% endblock %}

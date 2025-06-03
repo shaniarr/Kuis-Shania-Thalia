@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/images/favicon.ico">
+    <title>QardioSis</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Nuosu+SIL&family=Poppins&display=swap" rel="stylesheet">
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Login page -->
+    <div class="container login-container">
+      <div class="row">
+        <div class="col-md-6 login-form-left">
+          <img src="static/images/QardioSis_logo.png" class="logo-form" alt="logo.png">
+          <div>
+            <img src="static/images/Myxoma_CMR.gif" class="image-form-login" alt="CMR.gif">
+            <h4 class="text-machinelearning">With Machine Learning can detect your heart anomaly</h4>
+          </div>
+        </div>
+        <div class="col-md-6 login-form-right">
+          <div class="formlogin">
+            <div class="panel">
+              <h1>Welcome Again!</h1>
+            </div>
+            <form id="login" action="{{ url_for('login') }}" method="POST">
+              {{ form.csrf_token() }}
+              <div class="mb-3 form-group">
+                {{ form.username(class="form-control loginformfield", placeholder="Username") }}
+              </div>
+              <div class="mb-3 form-group">
+                {{ form.password(class="form-control loginformfield", placeholder="Password") }}
+              </div>
+              <div class="d-grid col-9 gap-2 mx-auto form-group">
+                {{ form.submit(class="btn btn-success btn-user btn-block btn-login") }}
+              </div>
+              <div class="flashes" style="color:red;"> {% for message in get_flashed_messages() %} <b>
+                  <i>{{ message }}</i>
+                </b> {% endfor %} </div>
+              <div class="toregister">
+                <label> Don't have an account?</label>
+                <a href="{{ url_for('register') }}" class="register">Register</a><br>
+                <a href="{{ url_for('reset') }}" class="topassword">Forgot Password?</a>
+                <br>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

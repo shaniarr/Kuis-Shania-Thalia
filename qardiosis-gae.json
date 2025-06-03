@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "qardiosis",
+  "private_key_id": "7bb52343a50d7e150e99790f8e98eddab0a70539",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC9i4L5xCURO0HD\nNg/kxecOHzE3A6SH7kkRe0+GYC4cuQ3kBUQ0QKkmzr5YQuHod/5is78tmxydhpAW\nCErYpSYaNQ7f5KE/2OWdecYGM1/i+NQfWsEMmqytVm1GvW6VTr0sLFmxJZ8njb7K\nBQnL25h7zNurwWP/+HH9Eztd5zkqz5wwx/WA7Rg7y+2YrSSefrOMyVxRa9XNFAVH\nmdD8sKm0g0bI4b2m2I/I4eYarP8aLU8pqCxF4SroVgL09ueMs4TlVLFGLe26bD+t\niVarLYFV0OfYhQg3x7MBywcQx+gcmfFPkkDloNbzB9EXwJiLHC+zPJk4mjFpmw30\nrSjeixRHAgMBAAECggEAA4LtI6+hHCq5Mw1kHxj5QdViUlteJCmjYR6Hldlf2jUJ\nNoJQPtHKgjVuE02gHf5IbLogaR1TTLg6ruTrUn4kvuUZ2cbg3Ih/WV5/meCx/p05\ntTxT9Fe2G+W+U2bVcmX+62Z3YZNQvSkuv/3MIBt5BLMCFl0KCY5EZI9Kie4H5aWp\npodLzi7PQJRCXi8WbBhUn8Ftq/H2nvYYSXpbMrn8i0M94RATaBXXIP8VYFeQgPu7\nSPiVIcGp/TrNHdATfl/PIbgj5eYuCnedlTz6igrekwsOUZxTxF5MwvDclsX+ghSX\n7eeejP1WbHErhZyzChtsxys6R5bi1pKg+Vevkq5/6QKBgQD03HVqNYPmGrxjCTCi\nWBMQoYeLiFLGJ7b2cy4jqpeGFSGWqFUFoKVi7jxiNBksD+jD+6aHClPdERYrGIkT\njkDi+jXsEplAImsxMwIq7a+PzuAsiNMVpNbIJe1ORhQ1C1GWzf06Q2UjpOiwtuEp\ndJBSYuRUyLp/KIpClShQl7POLQKBgQDGKt2jIyAUDx+9xlpXAvPWQWQ8OAOBQ+RN\nrxq7CDyraCLe2Vxhlkc1QJuwxQptUQSlLWzayc3hBAqck0ra/2ovdDYpfUT87QD5\nxocfw5FCQXXAQTKJHhcr9kFkDwNFyFpGKL5r1RKRK3yW1Ju6x07Vtw2HzukYNe61\nT07cUpYowwKBgQCpI5ffk7PWwOUcq/5yRdB1jn6ovbQfuNNDjfBzJqWgMvyOqxx/\n1KYpnlMLqt0weJTau/weD946OFFN15bocT0VDK0usvI1QRE2XPvEV4cMGWT0nlbg\n/op2muw/Q101/umO+B9RnbhBVOp/FvSVxDTlE/aRMk7RA1nuAEZm1UOYyQKBgDuR\nXxZO1LGy6iOtoDJPnORmu66uV79fnR0M6cgW7cXIg9LhG7fp6HXFegdk84FwvSi5\nwuLxjoV5JYdzbyjtZgnlsPI/yaENzSFH4A5YRy3XZ4HnFz3IYcbBO17MdHthgmFc\nlgDsB6zDmavtNPKsPrJXWCXeuIqii6LMuDPaT3DpAoGBANeFR+mhRlPHwm1UtMEI\nWyYKe2NznKe88ggX6oQ7IX6Nlsna3SCB6qw/yPz8/7KCsaNV0n5KRlUcbliW1tE9\nZ7zxGfkpHTpWGF60jnrHKZDk3UJVdgpvzjIIslavykNaxOAOheeTx53Bf/c/19J0\nYmh6aZ7MmIVasyQfVWS7WWwt\n-----END PRIVATE KEY-----\n",
+  "client_email": "qardiosis@appspot.gserviceaccount.com",
+  "client_id": "114672007635860354537",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/qardiosis%40appspot.gserviceaccount.com"
+}

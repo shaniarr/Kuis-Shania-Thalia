@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-runtime: python310
-env: flex
+runtime: python39
+
 entrypoint: gunicorn -t 1000 -b :$PORT main:app
 
 
@@ -59,7 +59,7 @@ resources:
 
 env_variables:
   CLOUD_SQL_USERNAME: 'root'
-  CLOUD_SQL_PASSWORD: ' '
+  CLOUD_SQL_PASSWORD: 'passkuis1'
   CLOUD_SQL_DATABASE_NAME: 'qardiosis'
   CLOUD_SQL_CONNECTION_NAME: 'kuis-shania-thalia-bm6b:asia-southeast2:qardiosis'
 
@@ -68,7 +68,7 @@ env_variables:
 beta_settings:
   cloud_sql_instances: kuis-shania-thalia-bm6b:asia-southeast2:qardiosis
 
-service_account: qardiosis@appspot.gserviceaccount.com
+service_account: shaniathalia@kuis-shania-thalia-bm6b.iam.gserviceaccount.com
 # automatic_scaling:
 #   min_num_instances: 1
 #   max_num_instances: 15
